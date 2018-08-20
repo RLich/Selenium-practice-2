@@ -22,5 +22,9 @@ class Application:
         password_box("password").clear()
         password_box("password").send_keys(password)
 
+    def Enter_Catalog(self):
+        wd = self.wd
+        wd.find_element_by_id("app-").find_element_by ZROBIĆ PĘTLE
+
     def destroy(self):
         self.wd.quit()
