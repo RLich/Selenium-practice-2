@@ -1,7 +1,9 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from Config.cfg_att import Config
 
-class Admin_Panel:
+
+
+class Application:
     def __init__(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(1)
@@ -19,3 +21,6 @@ class Admin_Panel:
         password_box = wd.find_element_by_name
         password_box("password").clear()
         password_box("password").send_keys(password)
+
+    def destroy(self):
+        self.wd.quit()
