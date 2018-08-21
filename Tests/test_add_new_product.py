@@ -15,8 +15,6 @@ def test_add_new_product(app):
     app.enter_catalog()
     app.add_new_product()
     time.sleep(3)
-
-
-
-
+    app.enable_new_product()
+    time.sleep(3)
 

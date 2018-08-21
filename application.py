@@ -1,8 +1,6 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from Config.cfg_att import Config
 
-
-
 class Application:
     def __init__(self):
         self.wd = WebDriver()
@@ -34,10 +32,19 @@ class Application:
 
     def add_new_product(self):
         wd = self.wd
-        fa_fa_font_buttons = wd.find_elements_by_xpath("//ul[@class='list-inline pull-right']//i[@class='fa fa-plus']")
+        #fa_fa_font_buttons = wd.find_elements_by_xpath("//ul[@class='list-inline pull-right']//i[@class='fa fa-plus']")
+        fa_fa_font_buttons = wd.find_elements_by_xpath("//ul[@class='list-inline pull-right']//a[@class='btn btn-default']")
         for fa_fa_font_button in fa_fa_font_buttons:
             if fa_fa_font_button.text == " Add New Product":
                 fa_fa_font_button.click()
+                break
+
+    def enable_new_product(self):
+        wd = self.wd
+        radio_buttons = wd.find_elements_by_xpath("//input[@type='radio']")
+        for radio_button in radio_buttons:
+            if radio_button.text == " Enabled":
+                radio_button.click()
                 break
 
     def destroy(self):
