@@ -22,9 +22,15 @@ class Application:
         password_box("password").clear()
         password_box("password").send_keys(password)
 
-    def Enter_Catalog(self):
+        wd.find_element_by_name("login").submit()
+
+    def enter_catalog(self):
         wd = self.wd
-        wd.find_element_by_id("app-").find_element_by ZROBIĆ PĘTLE
+        box_apps = wd.find_elements_by_xpath("//ul[@id='box-apps-menu']//span[@class='name']")
+        for box_app in box_apps:
+            if box_app.text == "Catalog":
+                box_app.click()
+                break
 
     def destroy(self):
         self.wd.quit()

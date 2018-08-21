@@ -12,7 +12,8 @@ def app(request):
 def test_add_new_product(app):
     app.open_admin_panel_page()
     app.login(Config.username, Config.password)
-    time.sleep(1)
+    app.enter_catalog()
+    time.sleep(2)
 
 
 
