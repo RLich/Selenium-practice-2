@@ -1,5 +1,8 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from Config.cfg_att import Config
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
 
 class Application:
     def __init__(self):
@@ -22,9 +25,17 @@ class Application:
 
         wd.find_element_by_name("login").submit()
 
+    def waiter(self, wd):
+        wd = self.wd
+        wait = WebDriverWait(wd, 10)
+        return wait
+
     def enter_catalog(self):
         wd = self.wd
-        box_apps = wd.find_elements_by_xpath("//ul[@id='box-apps-menu']//span[@class='name']")
+        wait = self.waiter(wd)
+        xpath = "//ul[@id='box-apps-menu']//span[@class='name']"
+        wait.until(expected_conditions.visibility_of_element_located((By.XPATH, xpath)))
+        box_apps = wd.find_elements_by_xpath(xpath)
         for box_app in box_apps:
             if box_app.text == "Catalog":
                 box_app.click()
@@ -32,18 +43,13 @@ class Application:
 
     def add_new_product(self):
         wd = self.wd
-        #fa_fa_font_buttons = wd.find_elements_by_xpath("//ul[@class='list-inline pull-right']//i[@class='fa fa-plus']")
-        fa_fa_font_buttons = wd.find_elements_by_xpath("//ul[@class='list-inline pull-right']//a[@class='btn btn-default']")
-        for fa_fa_font_button in fa_fa_font_buttons:
-            if fa_fa_font_button.text == " Add New Product":
-                fa_fa_font_button.click()
-                break
+        wd.find_elements_by_xpath(("//ul[@class='list-inline pull-right']//a[@class='btn btn-default']"))[1].click()
 
     def enable_new_product(self):
         wd = self.wd
         radio_buttons = wd.find_elements_by_xpath("//input[@type='radio']")
         for radio_button in radio_buttons:
-            if radio_button.text == " Enabled":
+            if radio_button.text == '" Enabled"':
                 radio_button.click()
                 break
 
