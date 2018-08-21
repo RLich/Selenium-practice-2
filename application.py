@@ -47,11 +47,7 @@ class Application:
 
     def enable_new_product(self):
         wd = self.wd
-        radio_buttons = wd.find_elements_by_xpath("//input[@type='radio']")
-        for radio_button in radio_buttons:
-            if radio_button.text == '" Enabled"':
-                radio_button.click()
-                break
+        wd.find_element_by_xpath("//div[@class='btn-group btn-block btn-group-inline']/label[@class='btn btn-default']").click()
 
     def destroy(self):
         self.wd.quit()
