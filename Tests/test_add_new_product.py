@@ -13,7 +13,8 @@ def test_add_new_product(app):
     app.open_admin_panel_page()
     app.login(Config.username, Config.password)
     app.enter_catalog()
-    time.sleep(2)
+    app.add_new_product()
+    time.sleep(3)
 
 
 

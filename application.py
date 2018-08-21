@@ -32,5 +32,13 @@ class Application:
                 box_app.click()
                 break
 
+    def add_new_product(self):
+        wd = self.wd
+        fa_fa_font_buttons = wd.find_elements_by_xpath("//ul[@class='list-inline pull-right']//i[@class='fa fa-plus']")
+        for fa_fa_font_button in fa_fa_font_buttons:
+            if fa_fa_font_button.text == " Add New Product":
+                fa_fa_font_button.click()
+                break
+
     def destroy(self):
         self.wd.quit()
