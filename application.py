@@ -85,8 +85,9 @@ class Application:
 
     def set_quantity(self):
         wd = self.wd
-        wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']").clear()
-        wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']").send_keys(self.random_numbers(1, 10))
+        quantity_box = wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']")
+        quantity_box.clear()
+        quantity_box.send_keys(self.random_numbers(1, 10))
 
     def destroy(self):
         self.wd.quit()
