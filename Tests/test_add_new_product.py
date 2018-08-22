@@ -21,6 +21,6 @@ def test_add_new_product(app):
     app.enable_new_product()
     app.set_category_only_to(category_name)
     app.set_product_name_to(product_name)
-    #app.set_product_date_validation()
+
     time.sleep(3)
 
