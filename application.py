@@ -77,11 +77,16 @@ class Application:
         wd = self.wd
         price_box = wd.find_element_by_xpath("//div[@class='input-group']//input[@name='prices[USD]']")
         price_box.clear()
-        price_box.send_keys(self.random_numbers(1,10))
+        price_box.send_keys(self.random_numbers(1, 10))
 
     def move_to_stock(self):
         wd = self.wd
         wd.find_element_by_partial_link_text("Stock").click()
+
+    def set_quantity(self):
+        wd = self.wd
+        wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']").clear()
+        wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']").send_keys(self.random_numbers(1, 10))
 
     def destroy(self):
         self.wd.quit()
