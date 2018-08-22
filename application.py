@@ -100,10 +100,13 @@ class Application:
         wd = self.wd
         wd.find_element_by_xpath("//a[@title='Catalog']").click()
 
-    def enter_selected_category(self):
+    def enter_selected_category(self, category_name):
         wd = self.wd
-        # wd.find_element_by_xpath("//ul[@class='nav navbar-nav']//li[@data-id='2']").click() # do ewentualnego wykorzystania, id zawsze na propsie
-        wd.find_element_by_xpath("//aside[@id='sidebar']//a[text()[contains(., 'Rafał')]]").click()
+        wd.find_element_by_xpath("//aside[@id='sidebar']//a[text()[contains(., '%s')]]"%category_name).click()
+
+    def get_product_sticker(self, product_name):
+        wd = self.wd
+        return wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']"%product_name).text
 
     def destroy(self):
         self.wd.quit()
