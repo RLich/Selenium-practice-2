@@ -54,6 +54,11 @@ class Application:
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
 
+    def set_product_date_validation(self):
+        wd = self.wd
+        wd.find_element_by_name("date_valid_from").clear()
+        wd.find_element_by_name("date_valid_from").sendkeys("2018-08-20")
+
 
     def destroy(self):
         self.wd.quit()
