@@ -104,6 +104,14 @@ class Application:
         wd = self.wd
         wd.find_element_by_xpath("//aside[@id='sidebar']//a[text()[contains(., '%s')]]"%category_name).click()
 
+    def get_product_name(self, product_name):
+        wd = self.wd
+        product_names = wd.find_elements_by_xpath("//div[@class='products row half-gutter']//div[@class='name']")
+        for name in product_names:
+            if name.text == product_name:
+                return True
+        return False
+
     def get_product_sticker(self, product_name):
         wd = self.wd
         return wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']"%product_name).text

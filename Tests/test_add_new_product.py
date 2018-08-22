@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from Config.cfg_att import Config
@@ -31,5 +29,8 @@ def test_add_new_product(app):
     app.submit_product()
 
     app.enter_front_end_catalog()
-    time.sleep(3)
+    app.enter_selected_category(category_name)
+
+    assert app.get_product_name(product_name)
+    assert app.get_product_sticker(product_name) == "NEW"
 
