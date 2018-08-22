@@ -11,6 +11,7 @@ def app(request):
 
 def test_add_new_product(app):
     category_name = "Rafał"
+    product_name = app.random_string (5, 10)
 
     app.open_admin_panel_page()
     app.login(Config.username, Config.password)
@@ -19,6 +20,7 @@ def test_add_new_product(app):
     app.add_new_product()
     app.enable_new_product()
     app.set_category_only_to(category_name)
-    app.set_product_date_validation()
+    app.set_product_name_to(product_name)
+    #app.set_product_date_validation()
     time.sleep(3)
 

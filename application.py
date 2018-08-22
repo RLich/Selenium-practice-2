@@ -3,6 +3,8 @@ from Config.cfg_att import Config
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
+import random
+import string
 
 class Application:
     def __init__(self):
@@ -53,6 +55,15 @@ class Application:
         wd = self.wd
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
+
+    def random_string(self, min_len, max_len):
+        symbols = string.ascii_letters + string.digits + " " + string.punctuation
+        return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
+
+    def set_product_name_to(self, product_name):
+        wd = self.wd
+        wd.find_element_by_name("name[en]").clear()
+        wd.find_element_by_name("name[en]").send_keys(product_name)
 
     def set_product_date_validation(self):
         wd = self.wd
