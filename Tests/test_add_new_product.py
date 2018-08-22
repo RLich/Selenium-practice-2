@@ -29,5 +29,7 @@ def test_add_new_product(app):
     app.move_to_stock()
     app.set_quantity()
     app.submit_product()
+
+    app.enter_front_end_catalog()
     time.sleep(3)
 

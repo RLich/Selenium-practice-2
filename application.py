@@ -96,5 +96,14 @@ class Application:
         wd = self.wd
         wd.find_element_by_name("save").click()
 
+    def enter_front_end_catalog(self):
+        wd = self.wd
+        wd.find_element_by_xpath("//a[@title='Catalog']").click()
+
+    def enter_selected_category(self):
+        wd = self.wd
+        # wd.find_element_by_xpath("//ul[@class='nav navbar-nav']//li[@data-id='2']").click() # do ewentualnego wykorzystania, id zawsze na propsie
+        wd.find_element_by_xpath("//aside[@id='sidebar']//a[text()[contains(., 'Rafał')]]").click()
+
     def destroy(self):
         self.wd.quit()
