@@ -35,7 +35,7 @@ class Application:
         wait = WebDriverWait(wd, 10)
         return wait
 
-    def enter_catalog(self):
+    def enter_admin_catalog(self):
         wd = self.wd
         wait = self.waiter(wd)
         xpath = "//ul[@id='box-apps-menu']//span[@class='name']"
