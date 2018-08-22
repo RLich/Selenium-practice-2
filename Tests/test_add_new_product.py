@@ -1,7 +1,10 @@
+import time
+
 import pytest
+
 from Config.cfg_att import Config
 from application import Application
-import time
+
 
 @pytest.fixture
 def app(request):
@@ -25,5 +28,6 @@ def test_add_new_product(app):
     app.set_price()
     app.move_to_stock()
     app.set_quantity()
+    app.submit_product()
     time.sleep(3)
 

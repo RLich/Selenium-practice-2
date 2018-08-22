@@ -1,10 +1,13 @@
-from selenium.webdriver.chrome.webdriver import WebDriver
-from Config.cfg_att import Config
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
 import random
 import string
+
+from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
+from Config.cfg_att import Config
+
 
 class Application:
     def __init__(self):
@@ -88,6 +91,10 @@ class Application:
         quantity_box = wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']")
         quantity_box.clear()
         quantity_box.send_keys(self.random_numbers(1, 10))
+
+    def submit_product(self):
+        wd = self.wd
+        wd.find_element_by_name("save").click()
 
     def destroy(self):
         self.wd.quit()
