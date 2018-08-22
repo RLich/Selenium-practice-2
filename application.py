@@ -52,7 +52,7 @@ class Application:
     def set_category_only_to(self, category_name):
         wd = self.wd
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
-        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Rafał']").click()
+        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
 
 
     def destroy(self):
