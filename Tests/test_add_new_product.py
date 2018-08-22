@@ -14,7 +14,7 @@ def test_add_new_product(app):
     category_name = "Rafał"
     product_name = app.random_string (5, 10)
 
-    app.open_admin_panel_page()
+    app.open_admin_panel_page(Config.admin_panel)
     app.login(Config.username, Config.password)
 
     app.enter_admin_catalog()

@@ -6,17 +6,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from Config.cfg_att import Config
-
 
 class Application:
     def __init__(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(1)
 
-    def open_admin_panel_page(self):
+    def open_admin_panel_page(self, admin_panel_url):
         wd = self.wd
-        wd.get(Config.admin_panel)
+        wd.get(admin_panel_url)
 
     def login(self, username, password):
         wd = self.wd
