@@ -49,5 +49,11 @@ class Application:
         wd = self.wd
         wd.find_element_by_xpath("//div[@class='btn-group btn-block btn-group-inline']/label[@class='btn btn-default']").click()
 
+    def set_category_only_to(self, category_name):
+        wd = self.wd
+        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
+        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Rafał']").click()
+
+
     def destroy(self):
         self.wd.quit()
