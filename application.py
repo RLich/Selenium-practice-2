@@ -79,5 +79,9 @@ class Application:
         price_box.clear()
         price_box.send_keys(self.random_numbers(1,10))
 
+    def move_to_stock(self):
+        wd = self.wd
+        wd.find_element_by_partial_link_text("Stock").click()
+
     def destroy(self):
         self.wd.quit()
