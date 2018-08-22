@@ -60,11 +60,24 @@ class Application:
         symbols = string.ascii_letters + string.digits + " " + string.punctuation
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
+    def random_numbers(self, min_len, max_len):
+        return "".join([random.choice(string.digits) for i in range(random.randrange(min_len, max_len))])
+
     def set_product_name_to(self, product_name):
         wd = self.wd
-        wd.find_element_by_name("name[en]").clear()
-        wd.find_element_by_name("name[en]").send_keys(product_name)
+        product_name_box = wd.find_element_by_name("name[en]")
+        product_name_box.clear()
+        product_name_box.send_keys(product_name)
 
+    def move_to_prices(self):
+        wd = self.wd
+        wd.find_element_by_partial_link_text("Prices").click()
+
+    def set_price(self):
+        wd = self.wd
+        price_box = wd.find_element_by_xpath("//div[@class='input-group']//input[@name='prices[USD]']")
+        price_box.clear()
+        price_box.send_keys(self.random_numbers(1,10))
 
     def destroy(self):
         self.wd.quit()
