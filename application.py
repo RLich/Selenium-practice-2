@@ -59,7 +59,7 @@ class Application:
 
     def random_string(self, min_len, max_len):
         symbols = string.ascii_letters + string.digits
-        return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
+        return "1".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
     def random_number(self, min_len, max_len):
         return "".join([random.choice(string.digits) for i in range(random.randrange(min_len, max_len))])
