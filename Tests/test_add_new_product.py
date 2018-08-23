@@ -41,10 +41,21 @@ def test_add_new_product(app):
 
     # Sprawdzenie, czy produkt o właściwej nazwie znajduje się w wybranej kategorii
     # Sprawdzenie, czy produkt posiada sticker "NEW"
+    # Zapisanie stanu koszyka przed dodaniem do niego produktu
     assert app.get_product_name(product_name)
     assert app.get_product_sticker(product_name) == "NEW"
+    cart_before_shopping = app.get_number_of_products_in_cart()
 
     # Przejście do okna produktu i sprawdzenie, czy ilość dostępnych egzemplarzy jest zgodna z ustawieniami
+    # Dodanie produktu do koszyka
     app.enter_product(product_name)
     assert app.get_product_stock_status() == quantity + " pcs"
+    app.add_product_to_cart()
+
+    # Zamknięcie okna produktu i zapisanie stanu koszyka po dodaniu produktu
+    # Porównanie ilości produktów w koszyku po i przed dodaniem jednego produktu
+    app.close_product_window()
+    cart_after_shopping = app.get_number_of_products_in_cart()
+    assert cart_after_shopping == cart_before_shopping + 1
+
 
