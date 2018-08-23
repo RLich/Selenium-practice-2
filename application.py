@@ -124,10 +124,7 @@ class Application:
 
     def get_number_of_products_in_cart(self):
         wd = self.wd
-        wait = self.waiter(wd)
-        xpath = "//div[@id='cart']//span[@class='quantity']"
-        wait.until(expected_conditions.visibility_of_element_located((By.XPATH, xpath)))
-        return wd.find_element_by_xpath(xpath).text
+        return wd.find_element_by_xpath("//div[@id='cart']//span[@class='quantity']").text
 
     def add_product_to_cart(self):
         wd = self.wd
