@@ -62,7 +62,7 @@ class Application:
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
     def random_number(self, min_len, max_len):
-        return "".join([random.choice(string.digits) for i in range(random.randrange(min_len, max_len))])
+        return "".join([random.choice(string.digits)+1 for i in range(random.randrange(min_len, max_len))])
 
     def set_product_name_to(self, product_name):
         wd = self.wd
@@ -120,6 +120,8 @@ class Application:
 
     def get_product_stock_status(self):
         wd = self.wd
+        wait = self.waiter(wd)
+        wait.until(expected_conditions.visibility_of_element_located((By.XPATH("//div[@class='stock-available']/span[@class='value']"))))
         return wd.find_element_by_xpath("//div[@class='stock-available']/span[@class='value']").text
 
     def get_number_of_products_in_cart(self):
