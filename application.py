@@ -58,7 +58,7 @@ class Application:
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
 
     def random_string(self, min_len, max_len):
-        symbols = string.ascii_letters + string.digits + " " + string.punctuation
+        symbols = string.ascii_letters + string.digits
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
     def random_number(self, min_len, max_len):
@@ -121,8 +121,8 @@ class Application:
     def get_product_stock_status(self):
         wd = self.wd
         wait = self.waiter(wd)
-        wait.until(expected_conditions.visibility_of_element_located((By.XPATH("//div[@class='stock-available']/span[@class='value']"))))
-        return wd.find_element_by_xpath("//div[@class='stock-available']/span[@class='value']").text
+        wait.until(expected_conditions.visibility_of_element_located((By.XPATH("//div[@class='stock-available']"))))
+        return wd.find_element_by_xpath("//div[@class='stock-available']//span[@class='value']").text
 
     def get_number_of_products_in_cart(self):
         wd = self.wd
