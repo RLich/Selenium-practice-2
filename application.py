@@ -62,7 +62,7 @@ class Application:
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
     def random_number(self, min_len, max_len):
-        return "".join([random.choice(string.digits)+1 for i in range(random.randrange(min_len, max_len))])
+        return "".join([random.choice(string.digits) for i in range(random.randrange(min_len, max_len))])
 
     def set_product_name_to(self, product_name):
         wd = self.wd
