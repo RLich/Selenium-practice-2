@@ -44,3 +44,7 @@ def test_add_new_product(app):
     assert app.get_product_name(product_name)
     assert app.get_product_sticker(product_name) == "NEW"
 
+    # Przejście do okna produktu i sprawdzenie, czy ilość dostępnych egzemplarzy jest zgodna z ustawieniami
+    app.enter_product(product_name)
+    assert app.get_product_stock_status() == quantity + " pcs"
+

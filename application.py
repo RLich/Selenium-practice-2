@@ -114,5 +114,13 @@ class Application:
         wd = self.wd
         return wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']"%product_name).text
 
+    def enter_product(self, product_name):
+        wd = self.wd
+        wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']"%product_name).click()
+
+    def get_product_stock_status(self):
+        wd = self.wd
+        return wd.find_element_by_xpath("//div[@class='stock-available']/span[@class='value']").text
+
     def destroy(self):
         self.wd.quit()
