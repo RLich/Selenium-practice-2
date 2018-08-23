@@ -126,5 +126,13 @@ class Application:
         wd = self.wd
         return wd.find_element_by_xpath("//div[@id='cart']//span[@class='quantity']").text
 
+    def add_product_to_cart(self):
+        wd = self.wd
+        wd.find_element_by_xpath("//button[@name='add_cart_product']").submit()
+
+    def close_product_window(self):
+        wd = self.wd
+        wd.find_element_by_xpath("//div[@aria-label='Close']").click()
+
     def destroy(self):
         self.wd.quit()
