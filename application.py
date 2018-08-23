@@ -120,8 +120,6 @@ class Application:
 
     def get_product_stock_status(self):
         wd = self.wd
-        wait = self.waiter(wd)
-        wait.until(expected_conditions.visibility_of_element_located((By.XPATH("//div[@class='stock-available']"))))
         return wd.find_element_by_xpath("//div[@class='stock-available']//span[@class='value']").text
 
     def get_number_of_products_in_cart(self):
