@@ -122,5 +122,9 @@ class Application:
         wd = self.wd
         return wd.find_element_by_xpath("//div[@class='stock-available']/span[@class='value']").text
 
+    def get_number_of_products_in_cart(self):
+        wd = self.wd
+        return wd.find_element_by_xpath("//div[@id='cart']//span[@class='quantity']").text
+
     def destroy(self):
         self.wd.quit()
