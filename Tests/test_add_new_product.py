@@ -13,8 +13,8 @@ def app(request):
 def test_add_new_product(app):
     category_name = "Rafał"
     product_name = app.random_string (5, 10)
-    price = app.random_number(1, 10)
-    quantity = app.random_number(1, 10)
+    price = app.random_number(1, 5)
+    quantity = app.random_number(1, 5)
 
     # Wejście do panelu administratora, logowanie
     app.open_admin_panel_page(Config.admin_panel)
@@ -57,5 +57,3 @@ def test_add_new_product(app):
     app.close_product_window()
     cart_after_shopping = app.get_number_of_products_in_cart()
     assert cart_after_shopping == cart_before_shopping + 1
-
-
