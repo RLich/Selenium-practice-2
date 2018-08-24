@@ -135,5 +135,9 @@ class Application:
         wd = self.wd
         wd.find_element_by_xpath("//div[@aria-label='Close']").click()
 
+    def enter_cart(self):
+        wd = self.wd
+        wd.find_element_by_id("cart").click()
+
     def destroy(self):
         self.wd.quit()
