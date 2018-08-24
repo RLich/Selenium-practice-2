@@ -47,12 +47,11 @@ def test_add_new_product(app):
     cart_before_shopping = app.get_number_of_products_in_cart()
 
     # Przejście do okna produktu i sprawdzenie, czy ilość dostępnych egzemplarzy jest zgodna z ustawieniami
-    # Dodanie produktu do koszyka
+    # Dodanie produktu do koszyka i zamknięcie okna produktu
     app.enter_product(product_name)
     assert app.get_product_stock_status() == quantity + " pcs"
     app.add_product_to_cart()
-
-    # Zamknięcie okna produktu i zapisanie stanu koszyka po dodaniu produktu
-    # Porównanie ilości produktów w koszyku przed i po dodaniem jednego produktu
     app.close_product_window()
+
+    # Porównanie ilości produktów w koszyku przed i po dodaniem jednego produktu
     assert cart_before_shopping < app.get_number_of_products_in_cart()
