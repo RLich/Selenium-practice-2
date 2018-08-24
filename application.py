@@ -141,36 +141,36 @@ class Application:
         wd = self.wd
         wd.find_element_by_id("cart").click()
 
-    def fill_customer_details(self):
+    def fill_customer_details(self, firstname, lastname, address1, postcode, city, email, phone):
         wd = self.wd
 
         firstname_box = wd.find_element_by_name("firstname")
         firstname_box.clear()
-        firstname_box.send_keys(self.random_string(5, 10))
+        firstname_box.send_keys(firstname)
 
         lastname_box = wd.find_element_by_name("lastname")
         lastname_box.clear()
-        lastname_box.send_keys(self.random_string(5, 10))
+        lastname_box.send_keys(lastname)
 
         address1_box = wd.find_element_by_name("address1")
         address1_box.clear()
-        address1_box.send_keys(self.random_string(5, 10))
+        address1_box.send_keys(address1)
 
         postcode_box = wd.find_element_by_name("postcode")
         postcode_box.clear()
-        postcode_box.send_keys("11-111")
+        postcode_box.send_keys(postcode)
 
         city_box = wd.find_element_by_name("city")
         city_box.clear()
-        city_box.send_keys(self.random_string(5, 10))
+        city_box.send_keys(city)
 
         email_box = wd.find_element_by_name("email")
         email_box.clear()
-        email_box.send_keys("testowy@mail.com")
+        email_box.send_keys(email)
 
         phone_box = wd.find_element_by_name("phone")
         phone_box.clear()
-        phone_box.send_keys(self.random_number(5, 12))
+        phone_box.send_keys(phone)
 
         wd.find_element_by_name("save_customer_details").click()
 

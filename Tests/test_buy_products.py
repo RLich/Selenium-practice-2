@@ -38,9 +38,18 @@ def test_buy_products(app):
     assert cart_before_shopping < app.get_number_of_products_in_cart()
     assert app.get_number_of_products_in_cart() == "3"
 
-    # Wejście do koszyka, wypełnienie danych klienta i potwierdzenie zakupu
+    # Edytowalne właściwości do wypełnienia w danych klienta - wedle potrzeb
+    firstname = app.random_string(5, 10)
+    lastname = app.random_string(5, 10)
+    address1 = app.random_string(5, 10)
+    postcode = "11-111"
+    city = app.random_string(5, 10)
+    email = app.random_string(5, 10)+"@email.com"
+    phone = app.random_number(5, 10)
+
+    # Wejście do koszyka, wypełnienie danych klienta powyższymi zmiennymi i potwierdzenie zakupu
     app.enter_cart()
-    app.fill_customer_details()
+    app.fill_customer_details(firstname, lastname, address1, postcode, city, email, phone)
     app.confirm_order()
 
     # Potwierdzenie wyskoczenia błędu "HTTP ERROR 500"
