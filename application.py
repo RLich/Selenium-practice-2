@@ -143,7 +143,6 @@ class Application:
 
     def fill_customer_details(self):
         wd = self.wd
-        wait = self.waiter(wd)
 
         firstname_box = wd.find_element_by_name("firstname")
         firstname_box.clear()
@@ -174,8 +173,14 @@ class Application:
         phone_box.send_keys("123456789")
 
         wd.find_element_by_name("save_customer_details").click()
+
+    def confirm_order(self):
+        wd = self.wd
+        wait = self.waiter(wd)
+
         wait.until(expected_conditions.element_to_be_clickable((By.NAME, "confirm_order")))
         wd.find_element_by_name("confirm_order").click()
+
 
     def get_error_code(self):
         wd = self.wd
