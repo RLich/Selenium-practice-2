@@ -15,8 +15,8 @@ def app(request):
 def test_add_new_product(app):
     category_name = "Rafał"
     product_name = app.random_string (5, 10)
-    price = app.random_number(2, 5)
-    quantity = app.random_number(2, 5)
+    price = app.random_number(1, 5)
+    quantity = app.random_number(1, 5)
 
     # Wejście do panelu administratora, logowanie
     app.open_admin_panel_page(Config.admin_panel)
