@@ -181,6 +181,5 @@ class Application:
         wd = self.wd
         return wd.find_element_by_xpath("//div[@class='error-code']").text
 
-
     def destroy(self):
         self.wd.quit()
