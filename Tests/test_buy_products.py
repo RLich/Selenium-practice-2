@@ -17,4 +17,22 @@ def test_buy_products(app):
 
     app.open_page(Config.home_page)
     app.enter_selected_category(catalog_name)
+    cart_before_shopping = app.get_number_of_products_in_cart()
+
+    app.enter_product("Mi A1")
+    app.add_product_to_cart()
+    app.close_product_window()
+
+    app.enter_product("Mi Mix 2S")
+    app.add_product_to_cart()
+    app.close_product_window()
+
+    app.enter_product("Mi 8")
+    app.add_product_to_cart()
+    app.close_product_window()
+
+    time.sleep(1)
+    assert cart_before_shopping < app.get_number_of_products_in_cart()
+
+
     time.sleep(2)
