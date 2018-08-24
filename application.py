@@ -135,6 +135,7 @@ class Application:
     def close_product_window(self):
         wd = self.wd
         wd.find_element_by_xpath("//div[@aria-label='Close']").click()
+        time.sleep(0.5)
 
     def enter_cart(self):
         wd = self.wd
@@ -142,6 +143,7 @@ class Application:
 
     def fill_customer_details(self):
         wd = self.wd
+        wait = self.waiter(wd)
 
         firstname_box = wd.find_element_by_name("firstname")
         firstname_box.clear()
@@ -172,9 +174,8 @@ class Application:
         phone_box.send_keys("123456789")
 
         wd.find_element_by_name("save_customer_details").click()
-        time.sleep(2)
+        wait.until(expected_conditions.element_to_be_clickable((By.NAME, "confirm_order")))
         wd.find_element_by_name("confirm_order").click()
-        time.sleep(2)
 
     def get_error_code(self):
         wd = self.wd

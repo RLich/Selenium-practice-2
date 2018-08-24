@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from Config.cfg_att import Config
@@ -31,7 +29,6 @@ def test_buy_products(app):
     app.add_product_to_cart()
     app.close_product_window()
 
-    time.sleep(1)
     assert cart_before_shopping < app.get_number_of_products_in_cart()
 
     app.enter_cart()
@@ -39,6 +36,3 @@ def test_buy_products(app):
     app.fill_customer_details()
 
     assert app.get_error_code() == "HTTP ERROR 500"
-
-
-    time.sleep(2)

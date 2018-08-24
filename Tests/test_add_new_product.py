@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from Config.cfg_att import Config
@@ -57,5 +55,4 @@ def test_add_new_product(app):
     # Zamknięcie okna produktu i zapisanie stanu koszyka po dodaniu produktu
     # Porównanie ilości produktów w koszyku przed i po dodaniem jednego produktu
     app.close_product_window()
-    time.sleep(1)
     assert cart_before_shopping < app.get_number_of_products_in_cart()
