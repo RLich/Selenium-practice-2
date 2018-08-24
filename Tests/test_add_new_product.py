@@ -25,15 +25,7 @@ def test_add_new_product(app):
     # Przejście do zakładki Prices, ustalenie okreslonej ceny
     # Przejście do zakładki Stock, ustawienie okreslonej ilości egzemplarzy i zatwierdzenie produktu
     app.enter_admin_catalog()
-    app.add_new_product()
-    app.enable_new_product()
-    app.set_category_only_to(category_name)
-    app.set_product_name_to(product_name)
-    app.move_to_prices()
-    app.set_price(price)
-    app.move_to_stock()
-    app.set_quantity(quantity)
-    app.submit_product()
+    app.add_new_product(category_name, product_name, price, quantity)
 
     # Wejście na frontową stronę katalogu i przejście do zdefiniowanej kategorii
     app.enter_front_end_catalog()
