@@ -35,6 +35,7 @@ def test_buy_products(app):
     assert cart_before_shopping < app.get_number_of_products_in_cart()
 
     app.enter_cart()
+    app.fill_customer_details()
 
 
     time.sleep(2)

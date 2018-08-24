@@ -139,5 +139,30 @@ class Application:
         wd = self.wd
         wd.find_element_by_id("cart").click()
 
+    def fill_customer_details(self):
+        wd = self.wd
+        #wd.find_element_by_id("box-checkout-customer").clear()
+        wd.find_element_by_id("box-checkout-customer").send_keys("Rafal")
+
+        #wd.find_element_by_name("lastname").clear()
+        wd.find_element_by_name("lastname").send_keys(self.random_string(5, 10))
+
+        #wd.find_element_by_name("address1").clear()
+        wd.find_element_by_name("address1").send_keys(self.random_string(5, 10))
+
+        #wd.find_element_by_name("postcode").clear()
+        wd.find_element_by_name("postcode").send_keys("11-111")
+
+        #wd.find_element_by_name("city").clear()
+        wd.find_element_by_name("city").send_keys(self.random_string(5, 10))
+
+        #wd.find_element_by_name("email").clear()
+        wd.find_element_by_name("email").send_keys("testowy@mail.com")
+
+        #wd.find_element_by_name("phone").clear()
+        wd.find_element_by_name("phone").send_keys(self.random_number(9, 9))
+
+        wd.find_element_by_name("confirm_order").click()
+
     def destroy(self):
         self.wd.quit()
