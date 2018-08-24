@@ -45,19 +45,6 @@ class Application:
                 box_app.click()
                 break
 
-    def add_new_product(self):
-        wd = self.wd
-        wd.find_elements_by_xpath(("//ul[@class='list-inline pull-right']//a[@class='btn btn-default']"))[1].click()
-
-    def enable_new_product(self):
-        wd = self.wd
-        wd.find_element_by_xpath("//div[@class='btn-group btn-block btn-group-inline']/label[@class='btn btn-default']").click()
-
-    def set_category_only_to(self, category_name):
-        wd = self.wd
-        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
-        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
-
     def random_string(self, min_len, max_len):
         symbols = string.ascii_letters + string.digits
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
@@ -66,34 +53,41 @@ class Application:
         digits = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
         return "".join([random.choice(digits) for i in range(random.randrange(min_len, max_len))])
 
-    def set_product_name_to(self, product_name):
+    def add_new_product(self, category_name, product_name, price, quantity):
         wd = self.wd
+
+        # Click on "Add New Product" button
+        wd.find_elements_by_xpath(("//ul[@class='list-inline pull-right']//a[@class='btn btn-default']"))[1].click()
+
+        # Enable new product
+        wd.find_element_by_xpath("//div[@class='btn-group btn-block btn-group-inline']/label[@class='btn btn-default']").click()
+
+        # Set category
+        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
+        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
+
+        # Set product name
         product_name_box = wd.find_element_by_name("name[en]")
         product_name_box.clear()
         product_name_box.send_keys(product_name)
 
-    def move_to_prices(self):
-        wd = self.wd
+        # Move to Prices tab
         wd.find_element_by_partial_link_text("Prices").click()
 
-    def set_price(self, price):
-        wd = self.wd
+        # Set price
         price_box = wd.find_element_by_xpath("//div[@class='input-group']//input[@name='prices[USD]']")
         price_box.clear()
         price_box.send_keys(price)
 
-    def move_to_stock(self):
-        wd = self.wd
+        # Move to stock
         wd.find_element_by_partial_link_text("Stock").click()
 
-    def set_quantity(self, quantity):
-        wd = self.wd
+        # Set quantity
         quantity_box = wd.find_element_by_xpath("//table[@id='table-stock']//input[@name='quantity']")
         quantity_box.clear()
         quantity_box.send_keys(quantity)
 
-    def submit_product(self):
-        wd = self.wd
+        # Submit product
         wd.find_element_by_name("save").click()
 
     def enter_front_end_catalog(self):
