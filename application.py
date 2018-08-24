@@ -57,7 +57,7 @@ class Application:
         wd = self.wd
 
         # Click on "Add New Product" button
-        wd.find_elements_by_xpath(("//ul[@class='list-inline pull-right']//a[@class='btn btn-default']"))[1].click()
+        wd.find_element_by_xpath(("//ul[@class='list-inline pull-right']//a[contains(@href, 'edit_product')]")).click()
 
         # Enable new product
         wd.find_element_by_xpath("//div[@class='btn-group btn-block btn-group-inline']/label[@class='btn btn-default']").click()
