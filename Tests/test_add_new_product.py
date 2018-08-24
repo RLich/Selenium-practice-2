@@ -20,10 +20,10 @@ def test_add_new_product(app):
     app.open_page(Config.admin_panel)
     app.login(Config.username, Config.password)
 
-    # Przejście do katalogu w panelu administratora, dodanie nowego produktu poprzez wykonanie czynności:
-    # Ustawienia produktu na aktywny i przypisanie go do wybranego katalogu, nadanie nazwy
-    # Przejście do zakładki Prices, ustalenie okreslonej ceny
-    # Przejście do zakładki Stock, ustawienie okreslonej ilości egzemplarzy i zatwierdzenie produktu
+    # Przejście do katalogu w panelu administratora i dodanie nowego produktu poprzez wykonanie czynności:
+        # Ustawienia produktu na aktywny i przypisanie go do wybranego katalogu, nadanie nazwy
+        # Przejście do zakładki Prices, ustalenie okreslonej ceny
+        # Przejście do zakładki Stock, ustawienie okreslonej ilości egzemplarzy i zatwierdzenie produktu
     app.enter_admin_catalog()
     app.add_new_product(category_name, product_name, price, quantity)
 
