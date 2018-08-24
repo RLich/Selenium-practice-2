@@ -19,7 +19,7 @@ def test_add_new_product(app):
     quantity = app.random_number(1, 5)
 
     # Wejście do panelu administratora, logowanie
-    app.open_admin_panel_page(Config.admin_panel)
+    app.open_page(Config.admin_panel)
     app.login(Config.username, Config.password)
 
     # Przejście do katalogu w panelu administratora, dodanie nowego produktu poprzez wykonanie czynności:

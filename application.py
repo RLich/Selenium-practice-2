@@ -12,9 +12,9 @@ class Application:
         self.wd = WebDriver()
         self.wd.implicitly_wait(3)
 
-    def open_admin_panel_page(self, admin_panel_url):
+    def open_page(self, url):
         wd = self.wd
-        wd.get(admin_panel_url)
+        wd.get(url)
 
     def login(self, username, password):
         wd = self.wd
