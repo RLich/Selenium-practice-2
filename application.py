@@ -129,7 +129,7 @@ class Application:
     def close_product_window(self):
         wd = self.wd
         wd.find_element_by_xpath("//div[@aria-label='Close']").click()
-        time.sleep(0.5) # Wybaczcie, póki co nie znalazłem zacnego zastępstwa
+        time.sleep(1) # Wybaczcie, póki co nie znalazłem zacnego zastępstwa
 
     def enter_cart(self):
         wd = self.wd
