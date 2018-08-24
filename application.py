@@ -63,7 +63,7 @@ class Application:
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
     def random_number(self, min_len, max_len):
-        digits = ( "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        digits = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
         return "".join([random.choice(digits) for i in range(random.randrange(min_len, max_len))])
 
     def set_product_name_to(self, product_name):
@@ -146,11 +146,11 @@ class Application:
 
         firstname_box = wd.find_element_by_name("firstname")
         firstname_box.clear()
-        firstname_box.send_keys("Rafal")
+        firstname_box.send_keys(self.random_string(5, 10))
 
         lastname_box = wd.find_element_by_name("lastname")
         lastname_box.clear()
-        lastname_box.send_keys("Rafalowy")
+        lastname_box.send_keys(self.random_string(5, 10))
 
         address1_box = wd.find_element_by_name("address1")
         address1_box.clear()
@@ -170,7 +170,7 @@ class Application:
 
         phone_box = wd.find_element_by_name("phone")
         phone_box.clear()
-        phone_box.send_keys("123456789")
+        phone_box.send_keys(self.random_number(5, 12))
 
         wd.find_element_by_name("save_customer_details").click()
 
@@ -180,7 +180,6 @@ class Application:
 
         wait.until(expected_conditions.element_to_be_clickable((By.NAME, "confirm_order")))
         wd.find_element_by_name("confirm_order").click()
-
 
     def get_error_code(self):
         wd = self.wd
