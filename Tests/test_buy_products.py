@@ -35,7 +35,10 @@ def test_buy_products(app):
     assert cart_before_shopping < app.get_number_of_products_in_cart()
 
     app.enter_cart()
+
     app.fill_customer_details()
+
+    assert app.get_error_code() == "HTTP ERROR 500"
 
 
     time.sleep(2)

@@ -1,5 +1,6 @@
 import random
 import string
+import time
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
@@ -141,28 +142,44 @@ class Application:
 
     def fill_customer_details(self):
         wd = self.wd
-        #wd.find_element_by_id("box-checkout-customer").clear()
-        wd.find_element_by_id("box-checkout-customer").send_keys("Rafal")
 
-        #wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(self.random_string(5, 10))
+        firstname_box = wd.find_element_by_name("firstname")
+        firstname_box.clear()
+        firstname_box.send_keys("Rafal")
 
-        #wd.find_element_by_name("address1").clear()
-        wd.find_element_by_name("address1").send_keys(self.random_string(5, 10))
+        lastname_box = wd.find_element_by_name("lastname")
+        lastname_box.clear()
+        lastname_box.send_keys("Rafalowy")
 
-        #wd.find_element_by_name("postcode").clear()
-        wd.find_element_by_name("postcode").send_keys("11-111")
+        address1_box = wd.find_element_by_name("address1")
+        address1_box.clear()
+        address1_box.send_keys(self.random_string(5, 10))
 
-        #wd.find_element_by_name("city").clear()
-        wd.find_element_by_name("city").send_keys(self.random_string(5, 10))
+        postcode_box = wd.find_element_by_name("postcode")
+        postcode_box.clear()
+        postcode_box.send_keys("11-111")
 
-        #wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys("testowy@mail.com")
+        city_box = wd.find_element_by_name("city")
+        city_box.clear()
+        city_box.send_keys(self.random_string(5, 10))
 
-        #wd.find_element_by_name("phone").clear()
-        wd.find_element_by_name("phone").send_keys(self.random_number(9, 9))
+        email_box = wd.find_element_by_name("email")
+        email_box.clear()
+        email_box.send_keys("testowy@mail.com")
 
+        phone_box = wd.find_element_by_name("phone")
+        phone_box.clear()
+        phone_box.send_keys("123456789")
+
+        wd.find_element_by_name("save_customer_details").click()
+        time.sleep(2)
         wd.find_element_by_name("confirm_order").click()
+        time.sleep(2)
+
+    def get_error_code(self):
+        wd = self.wd
+        return wd.find_element_by_xpath("//div[@class='error-code']").text
+
 
     def destroy(self):
         self.wd.quit()
