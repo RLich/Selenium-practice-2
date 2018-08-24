@@ -30,6 +30,7 @@ def test_buy_products(app):
     app.close_product_window()
 
     assert cart_before_shopping < app.get_number_of_products_in_cart()
+    assert app.get_number_of_products_in_cart() == "3"
 
     app.enter_cart()
 
