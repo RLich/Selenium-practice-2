@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class Application:
     def __init__(self):
         self.wd = WebDriver()
-        self.wd.implicitly_wait(1)
+        self.wd.implicitly_wait(3)
 
     def open_admin_panel_page(self, admin_panel_url):
         wd = self.wd
@@ -62,8 +62,8 @@ class Application:
         return "".join([random.choice(symbols) for i in range(random.randrange(min_len, max_len))])
 
     def random_number(self, min_len, max_len):
-        digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        return "".join([random.choice(str(digits)) for i in range(random.randrange(min_len, max_len))])
+        digits = ( "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        return "".join([random.choice(digits) for i in range(random.randrange(min_len, max_len))])
 
     def set_product_name_to(self, product_name):
         wd = self.wd
