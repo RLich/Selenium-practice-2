@@ -35,8 +35,7 @@ def test_buy_products(app):
     app.close_product_window()
 
     # Porównanie stanu koszyka przed i po włożeniu do niego produktów oraz upewnienie się, że ich liczba wynosi "3"
-    assert cart_before_shopping < app.get_number_of_products_in_cart()
-    assert app.get_number_of_products_in_cart() == "3"
+    assert int(cart_before_shopping) + 3 == int(app.get_number_of_products_in_cart())
 
     # Edytowalne właściwości do wypełnienia w danych klienta - wedle potrzeb
     firstname = app.random_string(5, 10)

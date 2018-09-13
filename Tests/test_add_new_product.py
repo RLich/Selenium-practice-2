@@ -46,5 +46,4 @@ def test_add_new_product(app):
     app.close_product_window()
 
     # Porównanie ilości produktów w koszyku przed i po dodaniu jednego produktu
-    assert cart_before_shopping < app.get_number_of_products_in_cart()
-    assert app.get_number_of_products_in_cart() == "1"
+    assert int(cart_before_shopping) + 1 == int(app.get_number_of_products_in_cart())
