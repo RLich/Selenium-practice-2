@@ -28,13 +28,13 @@ def test_add_new_product(app):
     app.add_new_product(category_name, product_name, price, quantity)
 
     # Wejście na frontową stronę katalogu i przejście do zdefiniowanej kategorii
-    app.enter_front_end_catalog()
+    app.enter_shop_catalog()
     app.enter_selected_category(category_name)
 
     # Sprawdzenie, czy produkt o właściwej nazwie znajduje się w wybranej kategorii
     # Sprawdzenie, czy produkt posiada sticker "NEW"
     # Zapisanie stanu koszyka przed dodaniem do niego produktu
-    assert app.get_product_name(product_name)
+    assert app.check_product_name_with(product_name)
     assert app.get_product_sticker(product_name) == "NEW"
     cart_before_shopping = app.get_number_of_products_in_cart()
 

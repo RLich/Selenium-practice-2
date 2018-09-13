@@ -29,14 +29,14 @@ class Application:
 
         wd.find_element_by_name("login").submit()
 
-    def waiter(self, wd):
+    def waiter(self):
         wd = self.wd
         wait = WebDriverWait(wd, 10)
         return wait
 
     def enter_admin_catalog(self):
         wd = self.wd
-        wait = self.waiter(wd)
+        wait = self.waiter()
         xpath = "//ul[@id='box-apps-menu']//span[@class='name']"
         wait.until(expected_conditions.visibility_of_element_located((By.XPATH, xpath)))
         box_apps = wd.find_elements_by_xpath(xpath)
@@ -64,7 +64,7 @@ class Application:
 
         # Set category
         wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='Root']").click()
-        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']"%category_name).click()
+        wd.find_element_by_xpath("//div[@class='form-control']//input[@data-name='%s']" % category_name).click()
 
         # Set product name
         product_name_box = wd.find_element_by_name("name[en]")
@@ -90,15 +90,15 @@ class Application:
         # Submit product
         wd.find_element_by_name("save").click()
 
-    def enter_front_end_catalog(self):
+    def enter_shop_catalog(self):
         wd = self.wd
         wd.find_element_by_xpath("//a[@title='Catalog']").click()
 
     def enter_selected_category(self, category_name):
         wd = self.wd
-        wd.find_element_by_xpath("//aside[@id='sidebar']//a[text()[contains(., '%s')]]"%category_name).click()
+        wd.find_element_by_xpath("//aside[@id='sidebar']//a[text()[contains(., '%s')]]" % category_name).click()
 
-    def get_product_name(self, product_name):
+    def check_product_name_with(self, product_name):
         wd = self.wd
         product_names = wd.find_elements_by_xpath("//div[@class='products row half-gutter']//div[@class='name']")
         for name in product_names:
@@ -108,11 +108,11 @@ class Application:
 
     def get_product_sticker(self, product_name):
         wd = self.wd
-        return wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']"%product_name).text
+        return wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']" % product_name).text
 
     def enter_product(self, product_name):
         wd = self.wd
-        wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']"%product_name).click()
+        wd.find_element_by_xpath("//div[@data-name='%s']//div[@title='New']" % product_name).click()
 
     def get_product_stock_status(self):
         wd = self.wd
@@ -129,7 +129,7 @@ class Application:
     def close_product_window(self):
         wd = self.wd
         wd.find_element_by_xpath("//div[@aria-label='Close']").click()
-        time.sleep(0.5) # Wybaczcie, póki co nie znalazłem zacnego zastępstwa
+        time.sleep(0.75)
 
     def enter_cart(self):
         wd = self.wd
@@ -170,7 +170,7 @@ class Application:
 
     def confirm_order(self):
         wd = self.wd
-        wait = self.waiter(wd)
+        wait = self.waiter()
 
         wait.until(expected_conditions.element_to_be_clickable((By.NAME, "confirm_order")))
         wd.find_element_by_name("confirm_order").click()
